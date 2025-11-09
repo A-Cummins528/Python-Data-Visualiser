@@ -86,6 +86,7 @@ A list of useful seeds and their expected outcomes (e.g., "runs out of energy," 
 ## Example
 
 Here is the output from seed value `7292`:
+
 ![Output from running the program with seed value 7292.](/assets/images/7292output.png)
 
 And this is the Magpie visualising those moves:
