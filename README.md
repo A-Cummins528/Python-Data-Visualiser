@@ -1,5 +1,7 @@
 # Magpie: A Python Turtle-Based Data Visualiser
 
+![Screenshot of the Magpie successfully finding the special cell H6.](/assets/images/MagpieImage.png)
+
 This project is a data visualisation tool built with Python and the ``turtle`` graphics library. It parses a list of abstract movement commands and translates them into a visual simulation of a magpie's flight path on a hexagonal grid.
 
 This project was developed for the IFB104: Building IT Systems unit at Queensland University of Technology (QUT). The assignment was to create a simulation that could process a "log" of data and display its contents visually.
@@ -16,9 +18,9 @@ The simulation proceeds step-by-step, drawing the magpie's new position and orie
 
 The data set is a list of lists.
 
-    - **Initial State:** The first item defines the magpie's starting energy (the maximum number of steps) and its initial direction (e.g., 'North', 'South west')
+   - **Initial State:** The first item defines the magpie's starting energy (the maximum number of steps) and its initial direction (e.g., 'North', 'South west')
 
-    - **Move Actions:** All subsequent items define one of three actions for each step:
+   - **Move Actions:** All subsequent items define one of three actions for each step:
         
         - ``Move forward`` 
         
@@ -30,36 +32,36 @@ The data set is a list of lists.
 
 The simulation halts immediately when one of the following occurs:
 
-    1. **Energy Exhaustion:** The magpie completes its maximum number of steps. The program displays: "The bird became exhausted after X steps!"
+   1. **Energy Exhaustion:** The magpie completes its maximum number of steps. The program displays: "The bird became exhausted after X steps!"
 
-    2. **Off-Grid:** The magpie's next move would take it outside the monitored grid perimeter. The program displays: "The bird flew away after X steps!"
+   2. **Off-Grid:** The magpie's next move would take it outside the monitored grid perimeter. The program displays: "The bird flew away after X steps!"
 
-    3. **Special Cell:** The magpie lands on one of the three predefined "special" cells (A3, D8, or H6). The program displays: "Found a special cell after X steps!"
+   3. **Special Cell:** The magpie lands on one of the three predefined "special" cells (A3, D8, or H6). The program displays: "Found a special cell after X steps!"
 
 
 ## 3. Technical Implementation
 
 The solution is contained within ``assignment_1.py`` and is structured around several key functions:
 
-    - ``visualise_data(random_moves)``: This is the main simulation engine. It initializes the turtle, reads the initial state, and then loops through the energy range. In each loop, it checks for off-grid, special cell, and exhaustion conditions before drawing the next step.
+   - ``visualise_data(random_moves)``: This is the main simulation engine. It initializes the turtle, reads the initial state, and then loops through the energy range. In each loop, it checks for off-grid, special cell, and exhaustion conditions before drawing the next step.
 
-    - ``Magpie(x, y, direction)`` / ``Magpie_moves(x, y, direction)``: These are reusable, parameter-driven functions that draw the magpie symbol.
+   - ``Magpie(x, y, direction)`` / ``Magpie_moves(x, y, direction)``: These are reusable, parameter-driven functions that draw the magpie symbol.
 
         - ``Magpie`` uses ``setheading()`` for the absolute initial orientation.
 
         - ``Magpie_moves`` uses relative turns (``left()``) for all subsequent steps. This was a key requirement to ensure the code was reusable and not hard-coded.
 
-    - ``heading_interger(input_string)``: A helper function that acts as a simple parser, translating human-readable string commands (e.g., 'North west', 'Move & turn left') into integer-based angle changes for the ``turtle``.
+   - ``heading_interger(input_string)``: A helper function that acts as a simple parser, translating human-readable string commands (e.g., 'North west', 'Move & turn left') into integer-based angle changes for the ``turtle``.
 
-    - ``Hexagon(color)``: A utility function to draw the pale green hexagonal cell background for the magpie at each step.
+   - ``Hexagon(color)``: A utility function to draw the pale green hexagonal cell background for the magpie at each step.
 
-    - ``Print_text(x, y, label)``: A utility function for writing labels and the final status message to the canvas.
+   - ``Print_text(x, y, label)``: A utility function for writing labels and the final status message to the canvas.
 
 ## 4. How to Run
 
-    1. Ensure you have Python 3 installed.
+   1. Ensure you have Python 3 installed.
 
-    2. Place all three Python files in the same directory:
+   2. Place all three Python files in the same directory:
 
         ``assignment_1.py`` (The solution)
 
@@ -67,11 +69,24 @@ The solution is contained within ``assignment_1.py`` and is structured around se
 
         ``assignment_1_data_source.py`` (Provided data generator)
 
-    3. Run the main solution file from your terminal:
+   3. Run the main solution file from your terminal:
     ```python assignment_1.py```
 
-    4. A new ``turtle`` graphics window will open, and the simulation will run. Each run will produce a new, random data set and a different path.
+   4. A new ``turtle`` graphics window will open, and the simulation will run. Each run will produce a new, random data set and a different path.
 
 ### Testing with Fixed Data (Seeds)
 
 To test specific, repeatable scenarios, you can provide a "seed" value to the ``data_set()`` function call at the bottom of ``assignment_1.py``.
+
+For example:
+```visualise_data(data_set(7292))```
+
+A list of useful seeds and their expected outcomes (e.g., "runs out of energy," "finds special cell") is documented in the comments of ``assignment_1_data_source.py``.
+
+## Example
+
+Here is the output from seed value `7292`:
+![Output from running the program with seed value 7292.](/assets/images/7292output.png)
+
+And this is the Magpie visualising those moves:
+![Animated gif of the Magpie program.](/assets/images/Animation.gif)

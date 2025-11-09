@@ -543,7 +543,7 @@ create_drawing_canvas('Magpie', 'light grey', 'slate grey',True,False)
 # ***** work with "data_set()" as the function call,
 # ***** i.e., for any random data set that can be returned by
 # ***** the function when called with no seed
-visualise_data(data_set(7292)) # <-- no argument for "data_set" when assessed
+visualise_data(data_set()) # <-- no argument for "data_set" when assessed
 
 # Exit gracefully
 # ***** Do not change this function call
